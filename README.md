@@ -36,7 +36,7 @@ After downloading the file from Github, run the program interactively in the
 directory in which the file is saved using:  
     `$ python -i primitiveHashMap.py`  
 
-Run tests using:
+Run tests using:  
 	`$ python -i primitiveHashMapTests.py`
 
 Authors
