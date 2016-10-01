@@ -14,6 +14,10 @@ class PrimitiveHashMapTests(unittest.TestCase):
 		self.assertEqual(x.data.num_children, 1)
 		self.assertEqual(x.num_elem, 1)
 
+		boolErr = x.set(2, 'this is not a string key')
+		self.assertEqual(boolErr, False)
+		self.assertEqual(x.num_elem, 1)
+
 		bool2 = x.set('letters', 'abcdefg')
 		self.assertEqual(bool2, True)
 		self.assertEqual(x.num_elem, 2)
@@ -47,8 +51,11 @@ class PrimitiveHashMapTests(unittest.TestCase):
 		self.assertEqual(boolean, True)
 		self.assertEqual(x.num_elem, 2)
 
-		error = x.get('error')
-		self.assertEqual(error, None)
+		error1 = x.get('error')
+		self.assertEqual(error1, None)
+
+		error2 = x.get({0: 4})
+		self.assertEqual(error2, None)
 
 		x.set('boolean', False)
 		new_bool = x.get('boolean')
@@ -79,8 +86,12 @@ class PrimitiveHashMapTests(unittest.TestCase):
 		self.assertEqual(deleted, ['delete', 'me'])
 		self.assertEqual(x.num_elem, 1)
 
-		error = x.delete('nonexistent')
-		self.assertEqual(error, None)
+		error1 = x.delete('nonexistent')
+		self.assertEqual(error1, None)
+		self.assertEqual(x.num_elem, 1)
+
+		error2 = x.delete(['this', 'is', 'incorrect'])
+		self.assertEqual(error2, None)
 		self.assertEqual(x.num_elem, 1)
 
 		x.set('listen', {'walk': 1, 'the': 2, 'moon': 3})

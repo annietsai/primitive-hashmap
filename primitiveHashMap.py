@@ -21,6 +21,9 @@ class PrimitiveHashMap(object):
 		Set a key to map to a value in our HashMap. Returns True if successful;
 		else, returns False.
 		"""
+		if type(key) != str:
+			return False
+
 		if self.num_elem >= self.size:
 			return False
 
@@ -64,6 +67,9 @@ class PrimitiveHashMap(object):
 		Retrieves the object value that is mapped to by the inputted key.
 		Returns the value if successful; else, returns None.
 		"""
+		if type(key) != str:
+			return None
+
 		if self.num_elem == 0:
 			return None
 
@@ -91,6 +97,9 @@ class PrimitiveHashMap(object):
 		Deletes the key and its value from the HashMap if it exists. Returns
 		the value if successful; else, returns None.
 		"""
+		if type(key) != str:
+			return None
+
 		if self.num_elem == 0:
 			return None
 
